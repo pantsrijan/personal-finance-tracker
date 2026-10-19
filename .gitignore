@@ -1,0 +1,13 @@
+# Credentials / local config
+config.php
+.env
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Dependencies and logs
+vendor/
+node_modules/
+*.log
