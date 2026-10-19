@@ -64,3 +64,10 @@ footer {
     padding: 1rem;
     font-size: 0.8rem;
 }
+
+.error {
+    color: #c0392b;
+    margin: -0.5rem 0 1rem;
+    text-align: left;
+    min-height: 1.2rem;
+}
