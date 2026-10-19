@@ -31,3 +31,57 @@ if (chartCanvas) {
         }
     });
 }
+
+// Transactions page: add rows and filter the table (client side only for now)
+const addForm = document.getElementById("add-form");
+const tableBody = document.querySelector("#transactions-table tbody");
+const filterCategory = document.getElementById("filter-category");
+const filterFrom = document.getElementById("filter-from");
+const filterTo = document.getElementById("filter-to");
+
+function applyFilters() {
+    const category = filterCategory.value;
+    const from = filterFrom.value;
+    const to = filterTo.value;
+
+    for (const row of tableBody.rows) {
+        const rowDate = row.cells[0].textContent;
+        const rowCategory = row.cells[2].textContent;
+        let show = true;
+
+        if (category !== "all" && rowCategory !== category) show = false;
+        if (from && rowDate < from) show = false;
+        if (to && rowDate > to) show = false;
+
+        row.style.display = show ? "" : "none";
+    }
+}
+
+if (addForm && tableBody) {
+    filterCategory.addEventListener("change", applyFilters);
+    filterFrom.addEventListener("change", applyFilters);
+    filterTo.addEventListener("change", applyFilters);
+
+    addForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const type = document.getElementById("type").value;
+        const category = document.getElementById("category").value;
+        const amount = Number(document.getElementById("amount").value);
+        const date = document.getElementById("date").value;
+        const description = document.getElementById("description").value;
+
+        const row = tableBody.insertRow(0);
+        row.insertCell().textContent = date;
+        row.insertCell().textContent = type === "income" ? "Income" : "Expense";
+        row.insertCell().textContent = category;
+        row.insertCell().textContent = description;
+
+        const amountCell = row.insertCell();
+        amountCell.textContent = "$" + amount.toFixed(2);
+        amountCell.className = type;
+
+        addForm.reset();
+        applyFilters();
+    });
+}

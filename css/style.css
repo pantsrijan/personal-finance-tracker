@@ -124,3 +124,37 @@ main.wide {
     max-width: 400px;
     margin: 1rem auto;
 }
+
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.inline-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+th {
+    background: #336699;
+    color: white;
+}
