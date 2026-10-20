@@ -16,16 +16,16 @@ if (signupForm) {
     });
 }
 
-// Dashboard chart (sample data for now; real data will come from PHP/MySQL)
+// Dashboard chart
 const chartCanvas = document.getElementById("spending-chart");
 
 if (chartCanvas) {
     new Chart(chartCanvas, {
         type: "doughnut",
         data: {
-            labels: ["Food", "Rent", "Transportation", "Entertainment", "Other"],
+            labels: chartLabels,
             datasets: [{
-                data: [350, 700, 120, 95, 110.5],
+                data: chartValues,
                 backgroundColor: ["#336699", "#e67e22", "#2e7d32", "#8e44ad", "#95a5a6"]
             }]
         }
